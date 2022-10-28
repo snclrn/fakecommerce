@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fake Commerce</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/akar-icons-fonts/src/css/akar-icons.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Barlow:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/home.css" />
+    <script src="js/script.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <header class="navbar">
+        <div class="nav">
+          <div class="nav-wrapper">
+            <a href="#" class="nav-logo">
+              <span>fakecommerce</span>
+            </a>
+
+            <div class="search-bar">
+              <button>
+                <i class="ai-search"></i>
+              </button>
+              <input
+                type="text"
+                placeholder="Search for a product"
+                class="search-input"
+              />
+
+              <div class="search-results-wrapper"></div>
+            </div>
+
+            <!-- <div></div> -->
+
+            <div class="nav-items">
+              <button class="wishlist-button nav-button">
+                <i class="ai-heart"></i>
+                <p>Wishlist</p>
+              </button>
+
+              <button class="cart-button nav-button">
+                <i class="ai-cart"></i>
+                <p>Cart</p>
+                <span class="cart-items">3</span>
+              </button>
+
+              <div class="nav-avatar">
+                <img
+                  src="https://i.pinimg.com/originals/65/93/24/659324a53937e7e47e2ff13a99f5902f.png"
+                  alt=""
+                />
+              </div>
+            </div>
+            <!-- <div class="nav-buttons">
+              <button>Sign in</button>
+            </div> -->
+          </div>
+        </div>
+      </header>
+
+      <div class="featured-product">
+        <div class="fp-container">
+          <div class="fp-text">
+            <h1 class="fp-heading">IPhone X</h1>
+            <p class="fp-subhead">
+              SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED
+              technology A12 Bionic chip. Get yours now.
+            </p>
+            <button class="fp-button" onclick="openProduct(2)">
+              <span>Check it out</span>
+              <i class="ai-arrow-right"></i>
+            </button>
+          </div>
+          <img src="./img/iphone-x.png" alt="" />
+        </div>
+      </div>
+
+      <div class="categories-section">
+        <div class="categories-container">
+          <button class="scroll-right">
+            <i class="ai-chevron-left"></i>
+          </button>
+
+          <div class="categories-wrapper">
+            <div class="fade-left"></div>
+            <div class="categories"></div>
+            <div class="fade-right"></div>
+          </div>
+
+          <button class="scroll-left">
+            <i class="ai-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="products-category">
+        <!--  -->
+      </div>
+
+      <div class="products">
+        <!--  -->
+      </div>
+
+      <div class="product-modal-backdrop">
+        <div class="product-modal">
+          <div class="image-slides">
+            <button class="scroll-slide prev-slide">
+              <i class="ai-chevron-left"></i>
+            </button>
+            <div class="image-slides-container">
+              <!--  -->
+            </div>
+            <div class="slides-count-container">
+              <!--  -->
+            </div>
+
+            <button class="scroll-slide next-slide">
+              <i class="ai-chevron-right"></i>
+            </button>
+          </div>
+
+          <div class="product-whole-details"></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
