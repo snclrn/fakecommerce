@@ -598,6 +598,10 @@ details[open] > .nav-button .items-count {
   opacity: 1;
 }
 
+.product-details {
+  padding-top: 16px;
+}
+
 .product-discount {
   position: absolute;
   left: 0;
