@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Tienda | Login</title>
     <link rel="stylesheet" href="https://unpkg.com/akar-icons-fonts/src/css/akar-icons.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -13,114 +13,36 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/landing.css" />
+    <link rel="stylesheet" href="css/auth.css" />
     <link rel="stylesheet" href="css/footer.css" />
-    <script src="js/utils.js" defer></script>
-    <script src="js/landing.js" defer></script>
+    <script src="js/auth.js" defer></script>
   </head>
   <body>
-    <div style="position: relative">
-      <header class="header">
-        <div class="nav">
-          <a href="#" class="nav-logo">
-            <img src="img/logo.png" style="width: 40px; height: 40px; object-fit: cover" />
-            <span class="desktop-only">Tienda</span>
-          </a>
+    <div>
+      <div class="header">
+        <a href="/index.html" class="nav-logo">
+          <img src="img/logo.png" style="width: 40px; height: 40px; object-fit: cover" />
+          <span class="desktop-only">Tienda</span>
+        </a>
 
-          <nav class="desktop-only-navs">
-            <a href="#products">Products</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-            <a href="#newsletter">Newsletter</a>
-          </nav>
-
-          <div class="nav-buttons">
-            <a class="login" href="/login.html"> Log in </a>
-            <a class="register" href="/register.html"> Sign up </a>
-          </div>
-
-          <details class="nav-burger">
-            <summary>
-              <i class="ai-three-line-horizontal"></i>
-              <span>Menu</span>
-            </summary>
-
-            <div class="nav-buttons mobile-only">
-              <a href="#products"> Products </a>
-              <a href="#about"> About </a>
-              <a href="#contact"> Contact </a>
-              <a href="#newsletter"> Newsletter </a>
-              <a class="login" href="/login.html"> Login </a>
-              <a class="register" href="/register.html"> Sign up </a>
-            </div>
-          </details>
-        </div>
-      </header>
-
-      <main class="hero-container">
-        <div>
-          <h1 class="hero-heading">
-            Buy things you like, <br />
-            without too much hassle
-          </h1>
-          <h2 class="hero-subheading">Tienda provides you a hassle, and worry free e-shopping experience with its friendly UI.</h2>
-
-          <div>
-            <a class="hero-cta-button" href="/register.html">
-              <i class="ai-shopping-bag sb"></i>
-              <span>Shop now</span>
-              <div>
-                <i class="ai-chevron-right"></i>
-              </div>
-            </a>
-          </div>
-        </div>
-
-        <!-- <div>
-          <img src="img/hero-img.png" alt="" class="hero-img" />
-        </div> -->
-      </main>
-
-      <div id="products" class="products-section">
-        <div class="product-logo">
-          <i class="ai-headphone"></i>
-        </div>
-        <h1>Check out some of our products</h1>
-        <div class="products-wrapper">
-          <div class="products-container"></div>
-        </div>
+        <a href="/register.html" class="nav-button">Sign up</a>
       </div>
-
-      <div id="about" class="about-section">
-        <div class="about-container">
-          <div class="about-logo">
-            <i class="ai-shopping-bag"></i>
+      <div class="auth-container">
+        <h1>Sign in</h1>
+        <h2>Log in to your account</h2>
+        <form onsubmit="login(event)" class="form-container">
+          <div class="form-control">
+            <label for="username">Username</label>
+            <input type="text" name="login-username" id="username" />
+            <p class="error-msg username">Username does not exist</p>
           </div>
-          <h1>About</h1>
-          <p>Tienda is an e-commerce web based application that focuses on giving user a fun, easy, and smooth e-shopping experience.</p>
-        </div>
-      </div>
-
-      <div id="contact" class="contact-section">
-        <div class="contact-logo">
-          <i class="ai-phone"></i>
-        </div>
-        <h1>Contact</h1>
-        <p>
-          Tienda's office is located at <b>Palawan, Philippines</b>. If you got any concerns, you can always contact our customer service
-          with this number <b>0123-456-7890</b> or send us an email on <b>tienda@support.com</b>.
-        </p>
-      </div>
-
-      <div id="newsletter" class="newsletter-section">
-        <div class="newsletter-logo">
-          <i class="ai-newspaper"></i>
-        </div>
-        <h1>Newsletter</h1>
-        <p>Be updated with our product and get notified whenever there's a new arrival via email</p>
-        <form>
-          <input type="email" placeholder="Email Address" />
-          <button>Submit</button>
+          <div class="form-control">
+            <label for="password">Password</label>
+            <input type="password" name="login-password" id="password" />
+            <p class="error-msg password">Incorrect password</p>
+          </div>
+          <button class="form-button" type="submit">Continue</button>
+          <a href="/register.html" class="form-button no-bg">Create new account</a>
         </form>
       </div>
     </div>
@@ -223,6 +145,13 @@
         </div>
       </div>
     </footer>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/argon2-browser/1.18.0/argon2-bundled.min.js"
+      integrity="sha512-Alrh8vbmKDc5xiq7I/y8LTDwy9nw1nT9S/yR73HMMoWrpX4S1kizNPdWM896c/CDIGILNwAiaih627A94kRhYQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
 
     <!-- Redirect to home page if user is logged in -->
     <script>

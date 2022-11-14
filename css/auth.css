@@ -1,0 +1,136 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: auto;
+  min-height: 100vh;
+}
+
+.header {
+  padding: 10px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-bottom: 1px solid var(--gray-100);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  color: var(--gray-600);
+  font-family: Barlow;
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo .desktop-only {
+  margin-left: 4px;
+}
+
+.nav-logo .logo {
+  background-color: var(--primary-500);
+  background-image: linear-gradient(to bottom right, #3b82f6, var(--primary-500));
+  color: #fff;
+  border-radius: 10px;
+  font-weight: 700;
+  height: 30px;
+  width: 30px;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-button {
+  padding: 10px 14px;
+  background: var(--gray-200);
+  color: var(--gray-700);
+  font-weight: 600;
+  border-radius: 6px;
+}
+
+.auth-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.auth-container h1 {
+  font-size: 54px;
+  font-family: Barlow;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: var(--gray-800);
+}
+
+.auth-container h2 {
+  font-weight: 400;
+  font-size: 20px;
+  letter-spacing: -0.08px;
+  color: var(--gray-700);
+}
+
+.form-container {
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.form-control {
+  margin-bottom: 28px;
+}
+
+.form-control label {
+  font-weight: 500;
+  color: var(--gray-700);
+}
+
+.form-control input {
+  display: block;
+  width: 100%;
+  outline: 2px solid transparent;
+  outline-offset: -1px;
+  padding: 8px 10px;
+  border: 1px solid var(--gray-300);
+  margin-top: 10px;
+  border-radius: 6px;
+  transition: 150ms;
+}
+
+.form-control input:hover {
+  border-color: var(--gray-400);
+}
+
+.form-control input:focus {
+  outline-color: var(--primary-500);
+  /* box-shadow: 0 0 0 3px var(--primary-200); */
+}
+
+.form-button {
+  padding: 14px 16px;
+  margin-top: 10px;
+  background-color: var(--primary-500);
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: -0.05px;
+  border-radius: 6px;
+}
+
+.form-button.no-bg {
+  color: var(--gray-700);
+  background-color: transparent;
+  font-weight: 500;
+}
+
+.error-msg {
+  font-size: 14px;
+  color: #f43f5e;
+  margin-top: 6px;
+  display: none;
+}
+
+.error-msg.show {
+  display: block;
+}

@@ -4,11 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fake Commerce</title>
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/akar-icons-fonts/src/css/akar-icons.css"
-    />
+    <title>Tienda</title>
+    <link rel="stylesheet" href="https://unpkg.com/akar-icons-fonts/src/css/akar-icons.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,7 +14,11 @@
     />
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/home.css" />
-    <script src="js/script.js" defer></script>
+    <link rel="stylesheet" href="css/footer.css" />
+    <script src="js/home.js" defer></script>
+    <script src="js/dropdown.js" defer></script>
+    <script src="js/utils.js" defer></script>
+    <script src="js/auth.js"></script>
   </head>
   <body>
     <div class="container">
@@ -25,58 +26,86 @@
         <div class="nav">
           <div class="nav-wrapper">
             <a href="#" class="nav-logo">
-              <span>fakecommerce</span>
+              <img src="img/logo.png" style="width: 40px; height: 40px; object-fit: cover" />
+              <span class="desktop-only">Tienda</span>
             </a>
 
             <div class="search-bar">
               <button>
                 <i class="ai-search"></i>
               </button>
-              <input
-                type="text"
-                placeholder="Search for a product"
-                class="search-input"
-              />
+              <input type="text" placeholder="Search for a product" class="search-input" />
 
               <div class="search-results-wrapper"></div>
             </div>
 
-            <!-- <div></div> -->
-
             <div class="nav-items">
-              <button class="wishlist-button nav-button">
-                <i class="ai-heart"></i>
-                <p>Wishlist</p>
-              </button>
+              <details style="position: relative" data-wishlist>
+                <summary class="wishlist-button nav-button">
+                  <i class="ai-heart"></i>
+                  <p>Wishlist</p>
+                  <span class="items-count wishlist">3</span>
+                </summary>
 
-              <button class="cart-button nav-button">
-                <i class="ai-cart"></i>
-                <p>Cart</p>
-                <span class="cart-items">3</span>
-              </button>
+                <div class="nav-menu-caret"></div>
+                <div class="nav-menu">
+                  <header class="nav-header">Your Wishlist</header>
+                  <div class="list-items wishlist"></div>
+                </div>
+              </details>
 
-              <div class="nav-avatar">
-                <img
-                  src="https://i.pinimg.com/originals/65/93/24/659324a53937e7e47e2ff13a99f5902f.png"
-                  alt=""
-                />
-              </div>
+              <details style="position: relative" data-cart>
+                <summary class="cart-button nav-button">
+                  <i class="ai-cart"></i>
+                  <p>Cart</p>
+                  <span class="items-count cart">3</span>
+                </summary>
+
+                <div class="nav-menu-caret"></div>
+                <div class="nav-menu">
+                  <header class="nav-header">Your Cart</header>
+                  <div class="list-items cart"></div>
+                </div>
+              </details>
+
+              <details style="position: relative" data-menu>
+                <summary class="nav-menu-trigger">
+                  <p>Menu</p>
+                  <i class="ai-chevron-down"></i>
+                </summary>
+
+                <div class="nav-menu-caret"></div>
+                <div class="nav-menu">
+                  <div class="nav-menu-details"></div>
+                  <button onclick="openDropdown('[data-cart]')">
+                    <span>Your cart</span>
+                    <i class="ai-cart"></i>
+                  </button>
+                  <button onclick="openDropdown('[data-wishlist]')">
+                    <span>Your wishlist</span>
+                    <i class="ai-heart"></i>
+                  </button>
+                  <div class="nav-divider"></div>
+                  <button onclick="logout()">
+                    <span>Log out</span>
+                    <i class="ai-sign-out"></i>
+                  </button>
+                </div>
+              </details>
             </div>
-            <!-- <div class="nav-buttons">
-              <button>Sign in</button>
-            </div> -->
           </div>
         </div>
       </header>
 
+      <div class="fp-head">Featured Product</div>
       <div class="featured-product">
         <div class="fp-container">
           <div class="fp-text">
             <h1 class="fp-heading">IPhone X</h1>
             <p class="fp-subhead">
-              SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED
-              technology A12 Bionic chip. Get yours now.
+              SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip. Get yours now.
             </p>
+            <p class="fp-price">Get it for only <b>₱43,548</b></p>
             <button class="fp-button" onclick="openProduct(2)">
               <span>Check it out</span>
               <i class="ai-arrow-right"></i>
@@ -130,9 +159,149 @@
             </button>
           </div>
 
-          <div class="product-whole-details"></div>
+          <div class="product-whole-details">
+            <h2 class="wp-name"></h2>
+            <span class="wp-discount"></span>
+            <h1 class="wp-discounted-price"></h1>
+            <h3 class="wp-original-price"></h3>
+
+            <div style="display: flex; align-items: center">
+              <span class="product-category wp">
+                <i class="ai-tag"></i>
+                <p></p>
+              </span>
+
+              <div class="wp-rating-container">
+                <div class="wp-rating">★★★★★</div>
+                <span class="wp-rate"></span>
+              </div>
+            </div>
+
+            <div class="wishlist-btn-container"></div>
+
+            <div style="display: flex; align-items: center">
+              <div class="product-quantity">
+                <button class="increase" data-increase-quantity>
+                  <i class="ai-plus"></i>
+                </button>
+                <div class="quantity-count"></div>
+                <button class="decrease" data-decrease-quantity>
+                  <i class="ai-minus"></i>
+                </button>
+              </div>
+
+              <p style="margin-left: 10px; color: var(--gray-700)">Quantity</p>
+            </div>
+
+            <div class="action-button-container">
+              <div class="cart-btn-container"></div>
+              <button class="close-modal-btn">Cancel</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="copyright">
+          <div class="footer-logo">
+            <i class="ai-shopping-bag"></i>
+          </div>
+
+          <div class="copyright-text">
+            <p>Copyright &copy; 2022 Tienda</p>
+            <span>All Rights Reserved</span>
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column categories-footer">
+            <p class="head-text">Categories</p>
+            <ul>
+              <li>Smartphones</li>
+              <li>Laptops</li>
+              <li>Gragrances</li>
+              <li>Skincare</li>
+              <li>Groceries</li>
+              <li>Home Decoration</li>
+              <li>Furniture</li>
+              <li>Tops</li>
+              <li>Womens Dresses</li>
+              <li>Womens Shoes</li>
+              <li>Mens Shirts</li>
+              <li>Mens Shoes</li>
+              <li>Mens Watches</li>
+              <li>Womens Watches</li>
+              <li>Womens Bags</li>
+              <li>Womens Jewellery</li>
+              <li>Sunglasses</li>
+              <li>Automotive</li>
+              <li>Motorcycle</li>
+              <li>Lighting</li>
+            </ul>
+          </div>
+
+          <div class="column categories-footer">
+            <p class="head-text">Support</p>
+
+            <ul>
+              <li>
+                <a href="#">Feedback</a>
+              </li>
+              <li>
+                <a href="#">Need Help?</a>
+              </li>
+              <li>
+                <a href="#"> Bug Report </a>
+              </li>
+              <li>
+                <a href="#">Issue problem</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="column categories-footer">
+            <p class="head-text">Sections</p>
+            <ul>
+              <li>
+                <a href="#products">Products</a>
+              </li>
+              <li>
+                <a href="#about">About</a>
+              </li>
+              <li>
+                <a href="#newsletter">Newsletter</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="column categories-footer">
+            <p class="head-text">Socials</p>
+
+            <ul>
+              <li>Facebook</li>
+              <li>Instagram</li>
+              <li>Twitter</li>
+            </ul>
+          </div>
+
+          <div class="column categories-footer">
+            <p class="head-text">Privacy</p>
+
+            <ul>
+              <li>Our Policy</li>
+              <li>Terms of Service</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Redirect to login page if user is not logged in -->
+    <script>
+      if (!localStorage.getItem("loggedUser")) {
+        window.location.href = "/login.html";
+      }
+    </script>
   </body>
 </html>
